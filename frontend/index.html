@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ThinkClock Battery Diagnostic</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Plotly -->
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+  <!-- JsBarcode -->
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+</head>
+
+<body>
+
+<h1 class="title">🔋 Battery Cell Diagnostic Dashboard</h1>
+<p class="subtitle">ThinkClock – EIS Based Health Analysis</p>
+
+<!-- ================= Battery Image Upload ================= -->
+<div class="card">
+  <h3 class="section-title">📷 Battery Image</h3>
+  <input type="file" id="batteryImage" accept="image/*" onchange="handleBatteryImage()">
+
+  <div id="batteryPreview" class="image-preview">
+    <img id="batteryImg">
+  </div>
+</div>
+
+<!-- ================= Cell Identification ================= -->
+<div class="card hidden" id="cellSection">
+  <h3 class="section-title">🏷️ Cell Identification</h3>
+  <p class="cell-id">Cell ID: <span id="cellId"></span></p>
+  <svg id="barcode"></svg>
+</div>
+
+<!-- ================= Meta Information ================= -->
+<div class="card">
+  <h3 class="section-title">📄 Meta Information</h3>
+  <div class="grid">
+    <label>Condition <input value="Recycled"></label>
+    <label>Manufacturer <input value="Molicel"></label>
+    <label>Model <input value="INR21700-P45B"></label>
+    <label>Type <input value="Li-ion"></label>
+    <label>Form Factor <input value="Cylindrical 21700"></label>
+    <label>Mass (g) <input value="70"></label>
+    <label>Height (mm) <input value="70.15"></label>
+    <label>Diameter (mm) <input value="21.55"></label>
+    <label>Volume (cm³) <input value="25.59"></label>
+  </div>
+</div>
+
+<!-- ================= Electrical Parameters ================= -->
+<div class="card">
+  <h3 class="section-title">⚡ Electrical Parameters</h3>
+  <table>
+    <tr><td>Nominal Voltage</td><td>3.6 V</td></tr>
+    <tr><td>Capacity</td><td>4.5 Ah</td></tr>
+    <tr><td>Energy</td><td>16.2 Wh</td></tr>
+    <tr><td>Voltage Range</td><td>2.5 – 4.2 V</td></tr>
+    <tr><td>Continuous Current</td><td>8.61 A</td></tr>
+    <tr><td>Peak Current</td><td>17.5 A</td></tr>
+  </table>
+</div>
+
+<!-- ================= CSV + BODE ================= -->
+<div class="card flex csv-bode-wrapper">
+
+  <!-- CSV Upload Card -->
+  <div class="csv-box">
+    <h3 class="section-title">📁 EIS CSV</h3>
+
+    <div class="csv-controls">
+      <input type="file" id="csvFile" accept=".csv">
+      <button onclick="uploadCSV()">Analyze</button>
+    </div>
+
+    <p class="csv-hint">
+      Upload Electrochemical Impedance Spectroscopy (EIS) data in CSV format.
+    </p>
+  </div>
+
+  <!-- Bode Plot Card -->
+  <div class="bode-box">
+    <h3 class="section-title">📈 Bode Plot</h3>
+    <div id="bodePlot"></div>
+  </div>
+
+</div>
+
+<!-- ================= Equivalent Circuit ================= -->
+<div class="card">
+  <h3 class="section-title">🧪 Equivalent Circuit Model</h3>
+  <img src="ecm.jpeg" class="ecm-img">
+</div>
+
+<!-- ================= ECM Parameters ================= -->
+<div class="card">
+  <h3 class="section-title">🔧 Circuit Parameters</h3>
+  <table>
+    <tr><th>Parameter</th><th>Value</th><th>Description</th></tr>
+    <tr><td>Rb</td><td id="rb"></td><td>Bulk resistance</td></tr>
+    <tr><td>R_SEI</td><td id="rsei"></td><td>SEI resistance</td></tr>
+    <tr><td>CPE_SEI</td><td id="cpesei"></td><td>SEI capacitance</td></tr>
+    <tr><td>R_CT</td><td id="rct"></td><td>Charge transfer</td></tr>
+    <tr><td>Warburg</td><td id="warburg"></td><td>Diffusion</td></tr>
+  </table>
+</div>
+
+<!-- ================= SoH ================= -->
+<div class="card">
+  <h3 class="section-title">❤️ State of Health</h3>
+  <div class="soh-container">
+    <img src="battery_soh.jpg" class="soh-icon">
+    <div class="soh-text" id="sohValue">--</div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

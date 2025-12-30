@@ -1,0 +1,261 @@
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+
+  --bg: #eef2ff;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --text: #0f172a;
+  --muted: #64748b;
+}
+
+/* ================= BODY ================= */
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
+  margin: 0;
+  padding: 24px;
+  color: var(--text);
+}
+
+/* ================= HEADER ================= */
+
+.title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 36px;
+  font-size: 15px;
+}
+
+/* ================= CARDS ================= */
+
+.card {
+  background: var(--card);
+  padding: 24px;
+  margin-bottom: 28px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08),
+    0 2px 6px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.10),
+    0 4px 10px rgba(0,0,0,0.05);
+}
+
+.section-title {
+  margin-bottom: 18px;
+  color: var(--primary);
+  font-size: 19px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ================= INPUTS ================= */
+
+input {
+  padding: 10px 12px;
+  border-radius: 9px;
+  border: 1px solid #c7d2fe;
+  font-size: 14px;
+  background: #f8fafc;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* ================= GRID ================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: var(--muted);
+  gap: 6px;
+}
+
+/* ================= BUTTONS ================= */
+
+button {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 14px;
+  width: 100%;
+  box-shadow: 0 8px 18px rgba(37,99,235,0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(37,99,235,0.45);
+}
+
+/* ================= CSV + BODE ================= */
+
+.flex {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.csv-box {
+  width: 28%;
+  background: linear-gradient(180deg, #f8fafc, #eef2ff);
+  padding: 22px;
+  border-radius: 16px;
+  border: 2px dashed #c7d2fe;
+}
+
+.csv-box h3 {
+  margin-bottom: 12px;
+}
+
+.csv-hint {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.bode-box {
+  width: 72%;
+  background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+#bodePlot {
+  height: 440px;
+  margin-top: 14px;
+}
+
+/* ================= IMAGES ================= */
+
+.image-preview {
+  margin-top: 16px;
+}
+
+.image-preview img {
+  width: 180px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.ecm-img {
+  width: 520px;
+  max-width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+/* ================= TABLE ================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+td, th {
+  border: 1px solid var(--border);
+  padding: 12px;
+}
+
+th {
+  background: linear-gradient(180deg, #eef2ff, #e0e7ff);
+  font-weight: 700;
+}
+
+/* ================= CELL ID ================= */
+
+.cell-id span {
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 20px;
+}
+
+/* ================= SOH ================= */
+
+.soh-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.soh-icon {
+  width: 190px;
+}
+
+.soh-text {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--danger);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .flex {
+    flex-direction: column;
+  }
+
+  .csv-box,
+  .bode-box {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}
